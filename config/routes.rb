@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'player/index/:id' => 'player#index'
   get 'player/show_with_items_and_spells'
 
+  resources :items
+  resources :spells
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

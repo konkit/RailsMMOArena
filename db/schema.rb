@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150703210547) do
+ActiveRecord::Schema.define(version: 20150704185346) do
 
   create_table "items", force: :cascade do |t|
     t.string   "name",           limit: 255
-    t.integer  "attack_bonus",   limit: 4
-    t.integer  "defence_bonus",  limit: 4
-    t.integer  "coin_cost",      limit: 4
-    t.integer  "required_level", limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "attack_bonus",   limit: 4,   default: 0
+    t.integer  "defence_bonus",  limit: 4,   default: 0
+    t.integer  "coin_cost",      limit: 4,   default: 0
+    t.integer  "required_level", limit: 4,   default: 1
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "items_players", id: false, force: :cascade do |t|
@@ -30,12 +30,13 @@ ActiveRecord::Schema.define(version: 20150703210547) do
 
   create_table "players", force: :cascade do |t|
     t.string   "name",       limit: 255
-    t.integer  "level",      limit: 4
-    t.integer  "exp",        limit: 4
-    t.integer  "maxhealth",  limit: 4
-    t.integer  "coins",      limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "level",      limit: 4,   default: 1
+    t.integer  "exp",        limit: 4,   default: 0
+    t.integer  "maxhealth",  limit: 4,   default: 100
+    t.integer  "coins",      limit: 4,   default: 0
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "user_id",    limit: 4
   end
 
   create_table "players_spells", id: false, force: :cascade do |t|
@@ -45,13 +46,13 @@ ActiveRecord::Schema.define(version: 20150703210547) do
 
   create_table "spells", force: :cascade do |t|
     t.string   "name",           limit: 255
-    t.integer  "damage",         limit: 4
-    t.integer  "prefab_type",    limit: 4
-    t.integer  "cooldown_time",  limit: 4
-    t.integer  "coin_cost",      limit: 4
-    t.integer  "required_level", limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "damage",         limit: 4,   default: 0
+    t.integer  "prefab_type",    limit: 4,   default: 1
+    t.integer  "cooldown_time",  limit: 4,   default: 0
+    t.integer  "coin_cost",      limit: 4,   default: 0
+    t.integer  "required_level", limit: 4,   default: 1
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -61,6 +61,18 @@ class SpellsController < ApplicationController
     end
   end
 
+  def buy
+    if current_user.player.buy_spell( Spell.find(params[:id]) )
+      render status: 200
+    else
+      render status: 400, text: 'Not enough money'
+    end
+  end
+
+  def sell
+    current_user.player.sell_spell( Spell.find(params[:id]) )
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_spell

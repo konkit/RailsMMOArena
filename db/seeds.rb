@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+item1 = Item.create(name: 'Item1', coin_cost: 10)
+item2 = Item.create(name: 'Item2', coin_cost: 20)
+item3 = Item.create(name: 'Item3', coin_cost: 30)
+
+spell1 = Spell.create(name: 'Spell1', coin_cost: 10)
+spell2 = Spell.create(name: 'Spell2', coin_cost: 20)
+spell3 = Spell.create(name: 'Spell3', coin_cost: 30)

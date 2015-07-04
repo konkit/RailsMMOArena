@@ -32,7 +32,7 @@ class PlayersController < ApplicationController
   def edit
   end
 
-  # POST /players
+  # POST /pla  get 'players/current' => 'players#show_current'yers
   # POST /players.json
   def create
     @player = Player.new(player_params)

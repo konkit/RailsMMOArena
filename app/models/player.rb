@@ -14,4 +14,36 @@ class Player < ActiveRecord::Base
             numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 
   validates :user, presence: true
+
+  def buy_item(item)
+    if self.coins < item.coin_cost
+      return false
+    end
+
+    self.coins -= item.coin_cost
+    self.items << item
+    return true
+  end
+
+  def sell_item(item)
+    self.coins += item.coin_cost
+    self.items.delete(item)
+    return true
+  end
+
+  def buy_spell(spell)
+    if self.coins < item.coin_cost
+      return false
+    end
+
+    self.coins -= spell.coin_cost
+    self.spells << spell
+    return true
+  end
+
+  def sell_spell(spell)
+    self.coins += spell.coin_cost
+    self.spells.delete(spell)
+    return true
+  end
 end

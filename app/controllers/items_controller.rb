@@ -61,6 +61,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  def buy
+    if current_user.player.buy_item( Item.find(params[:id]) )
+      render status: 200
+    else
+      render status: 400, text: 'Not enough money'
+    end
+  end
+
+  def sell
+    current_user.player.sell_item( Item.find(params[:id]) )
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item

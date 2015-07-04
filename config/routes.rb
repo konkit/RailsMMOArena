@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'player/index/:id' => 'player#index'
   get 'player/show_with_items_and_spells'
 
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'player#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

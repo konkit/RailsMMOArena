@@ -1,0 +1,29 @@
+= form_for(@spell) do |f|
+  - if @spell.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@spell.errors.count, "error")
+        prohibited this spell from being saved:
+      %ul
+        - @spell.errors.full_messages.each do |message|
+          %li= message
+  .actions
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: "form-control"
+    .form-group
+      = f.label :damage
+      = f.text_field :damage, class: "form-control"
+    .form-group
+      = f.label :prefab_type
+      = f.text_field :prefab_type, class: "form-control"
+    .form-group
+      = f.label :cooldown_time
+      = f.text_field :cooldown_time, class: "form-control"
+    .form-group
+      = f.label :coin_cost
+      = f.text_field :coin_cost, class: "form-control"
+    .form-group
+      = f.label :required_level
+      = f.text_field :required_level, class: "form-control"
+    = f.submit

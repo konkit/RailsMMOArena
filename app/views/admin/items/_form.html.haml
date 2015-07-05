@@ -1,0 +1,26 @@
+= form_for(@item) do |f|
+  - if @item.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@item.errors.count, "error")
+        prohibited this item from being saved:
+      %ul
+        - @item.errors.full_messages.each do |message|
+          %li= message
+  .actions
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: "form-control"
+    .form-group
+      = f.label :attack_bonus
+      = f.text_field :attack_bonus, class: "form-control"
+    .form-group
+      = f.label :defence_bonus
+      = f.text_field :defence_bonus, class: "form-control"
+    .form-group
+      = f.label :coin_cost
+      = f.text_field :coin_cost, class: "form-control"
+    .form-group
+      = f.label :required_level
+      = f.text_field :required_level, class: "form-control"
+    = f.submit

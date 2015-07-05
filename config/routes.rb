@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  get 'players/current' => 'players#show_current'
-  resources :players, :items, :spells
+  namespace :user do
+    get 'players/current' => 'players#show_current'
+  end
+
+  namespace :admin do
+    resources :players, :items, :spells
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'players#show_current'
+  root 'user/players#show_current'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

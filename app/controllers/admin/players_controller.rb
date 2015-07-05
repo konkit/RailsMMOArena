@@ -1,4 +1,4 @@
-class PlayersController < ApplicationController
+class Admin::PlayersController < ApplicationController
   before_action :set_player, only: [:edit, :update, :destroy]
 
   # GET /players

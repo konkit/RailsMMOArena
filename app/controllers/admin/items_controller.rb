@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class Admin::ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
@@ -59,18 +59,6 @@ class ItemsController < ApplicationController
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def buy
-    if current_user.player.buy_item( Item.find(params[:id]) )
-      render status: 200
-    else
-      render status: 400, text: 'Not enough money'
-    end
-  end
-
-  def sell
-    current_user.player.sell_item( Item.find(params[:id]) )
   end
 
   private

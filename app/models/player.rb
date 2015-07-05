@@ -26,6 +26,10 @@ class Player < ActiveRecord::Base
   end
 
   def sell_item(item)
+    if !self.items.include?(item)
+      return false
+    end
+
     self.coins += item.coin_cost
     self.items.delete(item)
     return true
@@ -42,6 +46,10 @@ class Player < ActiveRecord::Base
   end
 
   def sell_spell(spell)
+    if !self.spells.include?(spell)
+      return false
+    end
+
     self.coins += spell.coin_cost
     self.spells.delete(spell)
     return true

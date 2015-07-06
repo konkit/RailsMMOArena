@@ -55,5 +55,7 @@ group :development, :test do
   gem 'guard-rspec'
 
   gem 'libnotify'
+
+  gem 'factory_girl_rails'
 end
 

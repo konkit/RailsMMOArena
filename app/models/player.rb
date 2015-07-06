@@ -36,7 +36,7 @@ class Player < ActiveRecord::Base
   end
 
   def buy_spell(spell)
-    if self.coins < item.coin_cost
+    if self.coins < spell.coin_cost
       return false
     end
 

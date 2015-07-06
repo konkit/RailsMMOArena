@@ -1,17 +1,11 @@
 class Admin::PlayersController < ApplicationController
+  before_action :authorize
   before_action :set_player, only: [:edit, :update, :destroy]
 
   # GET /players
   # GET /players.json
   def index
     @players = Player.all
-  end
-
-  def show_current
-    if current_user.player.nil?
-      redirect_to action: 'new'
-    end
-    @player = current_user.player
   end
 
   # GET /players/1
@@ -82,5 +76,11 @@ class Admin::PlayersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
       params[:player].permit(:name)
+    end
+
+    def authorize
+      if !current_user.admin_role?
+        render :file => "public/401.html", :status => :unauthorized
+      end
     end
 end

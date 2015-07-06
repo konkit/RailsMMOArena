@@ -7,8 +7,8 @@
   %tbody
     - @spells.each do |spell|
       %tr
-        %td= link_to 'Show', spell
-        %td= link_to 'Edit', edit_spell_path(spell)
-        %td= link_to 'Destroy', spell, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Show', [:admin, spell]
+        %td= link_to 'Edit', edit_admin_spell_path(spell)
+        %td= link_to 'Destroy', [:admin, spell], method: :delete, data: { confirm: 'Are you sure?' }
 %br/
-= link_to 'New Spell', new_spell_path
+= link_to 'New Spell', new_admin_spell_path

@@ -6,6 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+admin = User.new
+admin.email = 'admin@admin.com'
+admin.password = Rails.application.secrets.admin_pass
+admin.role = :admin_role
+admin.save!
+
 item1 = Item.create(name: 'Item1', coin_cost: 10)
 item2 = Item.create(name: 'Item2', coin_cost: 20)
 item3 = Item.create(name: 'Item3', coin_cost: 30)

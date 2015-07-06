@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+  before_action :authorize
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
@@ -70,5 +71,11 @@ class Admin::ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params[:item]
+    end
+
+    def authorize
+      if !current_user.role.admin?
+        render :file => "public/401.html", :status => :unauthorized
+      end
     end
 end

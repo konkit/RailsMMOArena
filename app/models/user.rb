@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :player
+
+  enum role: [ :user_role, :admin_role ]
 end

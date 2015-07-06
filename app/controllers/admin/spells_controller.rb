@@ -1,4 +1,5 @@
 class Admin::SpellsController < ApplicationController
+  before_action :authorize
   before_action :set_spell, only: [:show, :edit, :update, :destroy]
 
   # GET /spells
@@ -70,5 +71,11 @@ class Admin::SpellsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def spell_params
       params[:spell]
+    end
+
+    def authorize
+      if !current_user.role.admin?
+        render :file => "public/401.html", :status => :unauthorized
+      end
     end
 end

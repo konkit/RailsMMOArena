@@ -1,4 +1,4 @@
-= form_for(@spell) do |f|
+= form_for([:admin, @spell]) do |f|
   - if @spell.errors.any?
     #error_explanation
       %h2
